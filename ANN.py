@@ -146,10 +146,6 @@ class Network:
         delta = []
         currentLayerIndex = self.noLayers-1
 
-        # Copy of the network so I can store the stepped weights as we backpropagate (Yes I know highly inefficient but can't bother)
-        newConfig = Network(self.original_structure, self.activationFunctions, self.bias)
-        
-        # last layer
         currentLayer = self.layers[currentLayerIndex]
         for i in range(self.structure[currentLayerIndex]):
             delta.append(err[i] * currentLayer.activationFunction.derivate(currentLayer.neurons[i].output))
